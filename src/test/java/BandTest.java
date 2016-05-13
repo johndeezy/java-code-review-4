@@ -14,4 +14,10 @@ public class BandTest {
     Band myBand = new Band("Children of the Corn", "Jazz");
     assertTrue(myBand instanceof Band);
   }
+
+    @Test
+    public void getBandName_returnsBandName() {
+        Band myBand = new Band("Children of the Corn", "Jazz");
+        assertEquals("Children of the Corn", myBand.getBandName());
+    }
 }
