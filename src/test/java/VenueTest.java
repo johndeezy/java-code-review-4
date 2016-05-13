@@ -15,16 +15,16 @@ public class VenueTest {
         assertTrue(myVenue instanceof Venue);
     }
 
-    // @Test
-    // public void getFullName_returnsFirstNameAndLastName_String() {
-    //     Author myAuthor = new Author("Tim", "Anker");
-    //     assertEquals("Tim Anker", myAuthor.getFullName());
-    // }
-    //
-    // @Test
-    // public void all_emptyAtFirst() {
-    //     assertEquals(Author.all().size(), 0);
-    // }
+    @Test
+    public void getVenueName_returnsVenueName_String() {
+        Venue myVenue = new Venue("Venue", "Dallas", "Texas", 100);
+        assertEquals("Venue", myVenue.getVenueName());
+    }
+
+    @Test
+    public void all_emptyAtFirst() {
+        assertEquals(Venue.all().size(), 0);
+    }
     //
     // @Test
     // public void equals_returnsTrueifTitlesAreTheSame() {
