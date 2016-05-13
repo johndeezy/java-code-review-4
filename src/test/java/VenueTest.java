@@ -25,13 +25,13 @@ public class VenueTest {
     public void all_emptyAtFirst() {
         assertEquals(Venue.all().size(), 0);
     }
-    //
-    // @Test
-    // public void equals_returnsTrueifTitlesAreTheSame() {
-    //     Author firstAuthor = new Author("Author 1", "last");
-    //     Author secondAuthor = new Author("Author 1", "last");
-    //     assertTrue(firstAuthor.equals(secondAuthor));
-    // }
+
+    @Test
+    public void equals_returnsTrueifVenueNamesAreTheSame() {
+        Venue myVenue1 = new Venue("Venue", "Dallas", "Texas", 100);
+        Venue myVenue2 = new Venue("Venue", "Dallas", "Texas", 100);
+        assertTrue(myVenue1.equals(myVenue2));
+    }
     //
     // @Test
     // public void save_returnsTrueifTitlesAreTheSame() {
