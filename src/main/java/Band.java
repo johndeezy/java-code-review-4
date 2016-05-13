@@ -5,19 +5,19 @@ import org.sql2o.*;
 public class Band{
     private int id;
     private String bandName;
-    private String bandGenre;
+    private String genre;
 
-    public Band(String bandName, String bandGenre) {
+    public Band(String bandName, String genre) {
         this.bandName = bandName;
-        this.bandGenre = bandGenre;
+        this.genre = genre;
     }
 
     public String getBandName() {
         return bandName;
     }
 
-    public String getBandGenre() {
-        return bandGenre;
+    public String getGenre() {
+        return genre;
     }
 
     public int getId() {
@@ -31,5 +31,15 @@ public class Band{
         }
     }
 
-    
+    @Override
+    public boolean equals(Object otherBand) {
+        if (!(otherBand instanceof Band)) {
+            return false;
+        } else {
+            Band newBand = (Band) otherBand;
+            return this.getBandName().equals(newBand.getBandName()) &&
+            this.getGenre().equals(newBand.getGenre()) &&
+            this.getId() == newBand.getId();
+    }
+  }
 }
