@@ -1,6 +1,17 @@
-<h1>Portland Library Resources and Checkout</h1>
+<h1>Band Tracker +</h1>
+<br>
+<h4>Your Bands:</h4>
+<ul>
+    #foreach ($band in $bands)
+        <li><a href="/band/$band.getId()">$band.getBandName(), $band.getGenre()</a></li>
+    #end
+</ul>
 
-<p></p>
-
-<h3><a href="/librarian">Librarian Options</a></h3>
-<h3><a href="/patron">Patron Options</a></h3>
+<h4>Add Band:</h4>
+<form class="form-group" action="/index" method="post">
+  <label for="bandName">Band Name:</label>
+  <input type="text" id="bandName" name="bandName">
+  <label for="genre">Genre:</label>
+  <input type="text" id="genre" name="genre">
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
