@@ -40,13 +40,13 @@ public class VenueTest {
         assertEquals(Venue.all().get(0), myVenue1);
     }
 
-    // @Test
-    // public void save_assignsIdToObject_1() {
-    //     Venue firstAuthor = new Author("Author 1", "last");
-    //     firstAuthor.save();
-    //     Author savedAuthor = Author.all().get(0);
-    //     assertEquals(savedAuthor.getId(), firstAuthor.getId());
-    // }
+    @Test
+    public void save_assignsIdToObject_1() {
+        Venue myVenue1 = new Venue("Venue", "Dallas", "Texas", 100);
+        myVenue1.save();
+        Venue savedVenue = Venue.all().get(0);
+        assertEquals(savedVenue.getId(), myVenue1.getId());
+    }
     //
     // @Test
     // public void find_findsAuthorInDatabase_true() {
