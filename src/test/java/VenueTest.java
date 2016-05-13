@@ -32,17 +32,17 @@ public class VenueTest {
         Venue myVenue2 = new Venue("Venue", "Dallas", "Texas", 100);
         assertTrue(myVenue1.equals(myVenue2));
     }
-    //
-    // @Test
-    // public void save_returnsTrueifTitlesAreTheSame() {
-    //     Author firstAuthor = new Author("Author 1", "last");
-    //     firstAuthor.save();
-    //     assertEquals(Author.all().get(0), firstAuthor);
-    // }
-    //
+
+    @Test
+    public void save_returnsTrueifVenueNamesAreTheSame() {
+        Venue myVenue1 = new Venue("Venue", "Dallas", "Texas", 100);
+        myVenue1.save();
+        assertEquals(Venue.all().get(0), myVenue1);
+    }
+
     // @Test
     // public void save_assignsIdToObject_1() {
-    //     Author firstAuthor = new Author("Author 1", "last");
+    //     Venue firstAuthor = new Author("Author 1", "last");
     //     firstAuthor.save();
     //     Author savedAuthor = Author.all().get(0);
     //     assertEquals(savedAuthor.getId(), firstAuthor.getId());
