@@ -10,8 +10,8 @@ public class BandTest {
   public DatabaseRule database = new DatabaseRule();
 
   // @Test
-  // public void Author_instantiatesCorrectly() {
-  //   Author myAuthor = new Author("Tim", "Anker");
-  //   assertTrue(myAuthor instanceof Author);
+  // public void Band_instantiatesCorrectly() {
+  //   Band myBand = new Band("Tim", "Anker");
+  //   assertTrue(myBand instanceof Band);
   // }
 }
