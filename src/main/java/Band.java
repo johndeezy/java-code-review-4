@@ -76,4 +76,48 @@ public class Band{
             .executeUpdate();
         }
     }
+
+    public void delete() {
+        try(Connection con = DB.sql2o.open()) {
+            String deleteQuery = "DELETE FROM bands WHERE id = :id;";
+            con.createQuery(deleteQuery)
+            .addParameter("id", this.getId())
+            .executeUpdate();
+
+            String joinDeleteQuery = "DELETE FROM bands_venues WHERE band_id = :band_id;";
+            con.createQuery(joinDeleteQuery)
+            .addParameter("band_id", this.getId())
+            .executeUpdate();
+        }
+    }
+
+    public void addVenue(Venue venue) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id);";
+            con.createQuery(sql)
+            .addParameter("band_id", this.id)
+            .addParameter("venue_id", venue.getId())
+            .executeUpdate();
+        }
+    }
+
+    public List<Venue> getVenues() {
+        try(Connection con = DB.sql2o.open()) {
+            String joinQuery = "SELECT venue_id FROM bands_venues WHERE band_id = :band_id;";
+            List<Integer> venueIds = con.createQuery(joinQuery)
+            .addParameter("band_id", this.getId())
+            .executeAndFetch(Integer.class);
+
+            List<Venue> venues = new ArrayList<Venue>();
+
+            for (Integer venueId : venueIds) {
+                String venueQuery = "SELECT * FROM venues WHERE id = :venueId;";
+                Venue venue = con.createQuery(venueQuery)
+                .addParameter("venueId", venueId)
+                .executeAndFetchFirst(Venue.class);
+                venues.add(venue);
+            }
+            return venues;
+        }
+    }
 }

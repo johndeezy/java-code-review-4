@@ -59,4 +59,43 @@ public class BandTest {
         Band savedBand = Band.all().get(0);
         assertEquals(savedBand.getId(), firstBand.getId());
     }
+
+    @Test
+    public void find_findsBandInDatabase_true() {
+        Band myBand = new Band("Band1", "Genre");
+        myBand.save();
+        Band savedBand = Band.find(myBand.getId());
+        assertTrue(myBand.equals(savedBand));
+    }
+
+    @Test
+    public void update_updatesNameAndGenre_StringString() {
+        Band myBand = new Band("Band1", "Genre1");
+        myBand.save();
+        myBand.update("Band2", "Genre2");
+        assertEquals("Band2", Band.find(myBand.getId()).getBandName());
+        assertEquals("Genre2", Band.find(myBand.getId()).getGenre());
+    }
+
+    @Test
+    public void delete_deletesBandFromDatabase_true() {
+        Band myBand = new Band("Band1", "Genre");
+        myBand.save();
+        int myBandId = myBand.getId();
+        myBand.delete();
+        assertEquals(null, Band.find(myBandId));
+    }
+
+    
+
+    // @Test
+    // public void delete_deletesAllBandsAndVenuesAssociations() {
+    //     Band myBand = new Band("Band1", "Genre1");
+    //     myBand.save();
+    //     Venue myVenue= new Venue("Venue1");
+    //     myVenue.save();
+    //     myBand.addVenue(myVenue);
+    //     myBand.delete();
+    //     assertEquals(0, myVenue.getBands().size());
+    // }
 }
