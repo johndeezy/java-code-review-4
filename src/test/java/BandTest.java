@@ -37,4 +37,26 @@ public class BandTest {
     public void all_emptyAtFirst() {
         assertEquals(Band.all().size(), 0);
     }
+
+    @Test
+    public void equals_returnsTrueifBandNamesAreTheSame() {
+        Band firstBand = new Band("Band1", "Genre");
+        Band secondBand = new Band("Band1", "Genre");
+        assertTrue(firstBand.equals(secondBand));
+    }
+
+    @Test
+    public void save_returnsTrueifTitlesAreTheSame() {
+        Band firstBand = new Band("Band1", "Genre");
+        firstBand.save();
+        assertEquals(Band.all().get(0), firstBand);
+    }
+
+    @Test
+    public void save_assignsIdToObject_1() {
+        Band firstBand = new Band("Band1", "Genre");
+        firstBand.save();
+        Band savedBand = Band.all().get(0);
+        assertEquals(savedBand.getId(), firstBand.getId());
+    }
 }

@@ -40,6 +40,17 @@ public class Band{
             return this.getBandName().equals(newBand.getBandName()) &&
             this.getGenre().equals(newBand.getGenre()) &&
             this.getId() == newBand.getId();
+        }
     }
-  }
+
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO bands (bandName, genre) VALUES (:bandName, :genre);";
+            this.id = (int) con.createQuery(sql, true)
+            .addParameter("bandName", this.bandName)
+            .addParameter("genre", this.genre)
+            .executeUpdate()
+            .getKey();
+        }
+    }
 }
