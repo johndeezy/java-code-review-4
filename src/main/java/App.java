@@ -26,7 +26,7 @@ public class App {
         response.redirect("/");
         return null;
     });
-    
+
     get("/band/:id", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         Band band = Band.find(Integer.parseInt(request.params(":id")));
@@ -48,6 +48,14 @@ public class App {
         band.addVenue(venue);
 
         response.redirect("/band/" + band.getId());
+        return null;
+    });
+
+    post("/delete/:id", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        Band band = Band.find(Integer.parseInt(request.params(":id")));
+        band.delete();
+        response.redirect("/");
         return null;
     });
   }

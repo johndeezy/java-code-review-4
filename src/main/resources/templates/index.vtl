@@ -4,6 +4,9 @@
 <ul>
     #foreach ($band in $bands)
         <li><a href="/band/$band.getId()">$band.getBandName(), $band.getGenre()</a></li>
+        <form class="" action="/delete/$band.getId()" method="post">
+            <small><button type="submit" class="">Delete</button></small>
+        </form></li>
     #end
 </ul>
 
