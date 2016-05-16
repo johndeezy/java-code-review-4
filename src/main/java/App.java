@@ -21,10 +21,15 @@ public class App {
             Map<String, Object> model = new HashMap<String, Object>();
             String bandName = request.queryParams("bandName");
             String bandGenre = request.queryParams("bandGenre");
-            Band newBand = new Band(bandName, bandGenre);
-            newBand.save();
-            response.redirect("/");
-            return null;
+            if (bandName.equals("") || bandGenre.equals("")) {
+                response.redirect("/");
+                return null;
+            } else {
+                Band newBand = new Band(bandName, bandGenre);
+                newBand.save();
+                response.redirect("/");
+                return null;
+            }
         });
 
         get("/band/:id", (request, response) -> {
