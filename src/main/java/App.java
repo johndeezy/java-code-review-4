@@ -47,15 +47,16 @@ public class App {
             String venueName = request.queryParams("venueName");
             String venueCity = request.queryParams("venueCity");
             String venueState = request.queryParams("venueState");
-            int venueCapacity = Integer.parseInt(request.queryParams("venueCapacity"));
-            if (venueName.equals("")) {
+            String venueCapacity = request.queryParams("venueCapacity");
+
+            if (venueName.equals("") || venueCapacity.equals("")) {
                 response.redirect("/band/" + band.getId());
                 return null;
             } else {
-                Venue venue = new Venue(venueName, venueCity, venueState, venueCapacity);
+                int venueCapacityEntry = Integer.parseInt(venueCapacity);
+                Venue venue = new Venue(venueName, venueCity, venueState, venueCapacityEntry);
                 venue.save();
                 band.addVenue(venue);
-
                 response.redirect("/band/" + band.getId());
                 return null;
             }
