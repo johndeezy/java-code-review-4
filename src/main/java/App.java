@@ -48,12 +48,17 @@ public class App {
             String venueCity = request.queryParams("venueCity");
             String venueState = request.queryParams("venueState");
             int venueCapacity = Integer.parseInt(request.queryParams("venueCapacity"));
-            Venue venue = new Venue(venueName, venueCity, venueState, venueCapacity);
-            venue.save();
-            band.addVenue(venue);
+            if (venueName.equals("")) {
+                response.redirect("/band/" + band.getId());
+                return null;
+            } else {
+                Venue venue = new Venue(venueName, venueCity, venueState, venueCapacity);
+                venue.save();
+                band.addVenue(venue);
 
-            response.redirect("/band/" + band.getId());
-            return null;
+                response.redirect("/band/" + band.getId());
+                return null;
+            }
         });
 
         post("/delete/:id", (request, response) -> {

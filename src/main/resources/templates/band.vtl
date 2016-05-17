@@ -15,19 +15,19 @@
 <div>
     <ul>
         #foreach ($venue in $band.getVenues())
-            <li><a href="/venue/$venue.getId()">$venue.getVenueName(), $venue.getVenueCity(), $venue.getVenueState()</a></li>
+            <li>$venue.getVenueName(), $venue.getVenueCity(), $venue.getVenueState()</a></li>
         #end
     </ul>
     <h2>Add Venue</h2>
     <form action="/band/$band.getId()" method="post">
         <label for="venueName">Venue Name:</label>
-        <input type="text" id="venueName" name="venueName">
+        <input type="text" id="venueName" name="venueName" placeholder="All inputs must be filled">
         <label for="venueCity">Venue City:</label>
-        <input type="text" id="venueCity" name="venueCity">
+        <input type="text" id="venueCity" name="venueCity" placeholder="All inputs must be filled">
         <label for="venueState">Venue State:</label>
-        <input type="text" id="venueState" name="venueState">
+        <input type="text" id="venueState" name="venueState" placeholder="All inputs must be filled">
         <label for="venueCapacity">Venue Capacity:</label>
-        <input type="text" id="venueCapacity" name="venueCapacity">
+        <input type="text" id="venueCapacity" name="venueCapacity" placeholder="Inputs must be filled, please enter integer here">
         <button type="submit" class="btn btn-success submitVenue">Submit</button>
     </form>
 </div>
