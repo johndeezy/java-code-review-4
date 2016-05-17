@@ -51,5 +51,18 @@ public class AppTest extends FluentTest{
         assertThat(pageSource()).contains("Update Band");
     }
 
+    @Test
+    public void addVenueRouteTest() {
+        Band band = new Band("test", "test");
+        band.save();
+        goTo("http://localhost:4567/");
+        click("a", withText("test"));
+        fill("#venueName").with("TestVenue");
+        fill("#venueCity").with("TestVenue");
+        fill("#venueState").with("TestVenue");
+        fill("#venueCapacity").with(1);
+        submit(".submitVenue");
+        assertThat(pageSource()).contains("TestVenue");
+    }
 
 }
