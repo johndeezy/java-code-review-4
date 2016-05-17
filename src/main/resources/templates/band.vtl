@@ -14,9 +14,9 @@
 
 <div>
     <ul>
-      #foreach ($venue in $band.getVenues())
-        <li><a href="/venue/$venue.getId()">$venue.getVenueName(), $venue.getVenueCity(), $venue.getVenueState()</a></li>
-      #end
+        #foreach ($venue in $band.getVenues())
+            <li><a href="/venue/$venue.getId()">$venue.getVenueName(), $venue.getVenueCity(), $venue.getVenueState()</a></li>
+        #end
     </ul>
     <h2>Add Venue</h2>
     <form action="/band/$band.getId()" method="post">
