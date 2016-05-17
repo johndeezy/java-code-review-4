@@ -3,7 +3,7 @@
 <h4>Your Bands:</h4>
 <ul>
     #foreach ($band in $bands)
-        <li><a href="/band/$band.getId()">$band.getBandName(), $band.getGenre()</a></li>
+        <li><a href="/band/$band.getId()">$band.getBandName()</a></li>
         <form class="" action="/delete/$band.getId()" method="post">
             <small><button type="submit" class="">Delete</button></small>
         </form></li>
@@ -16,5 +16,5 @@
   <input type="text" id="bandName" name="bandName" placeholder="both inputs must be filled">
   <label for="bandGenre">Genre:</label>
   <input type="text" id="bandGenre" name="bandGenre" placeholder="both inputs must be filled">
-  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="submit" class="btn btn-success bandSubmit">Submit</button>
 </form>

@@ -41,5 +41,15 @@ public class AppTest extends FluentTest{
         assertThat(pageSource()).contains("Blanco");
     }
 
+    @Test
+    public void bandPageRouteTest() {
+        goTo("http://localhost:4567/");
+        fill("#bandName").with("Rock");
+        fill("#bandGenre").with("Rock");
+        submit(".bandSubmit");
+        click("a", withText("Rock"));
+        assertThat(pageSource()).contains("Update Band");
+    }
+
 
 }
