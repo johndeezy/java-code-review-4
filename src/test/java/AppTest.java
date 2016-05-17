@@ -32,5 +32,14 @@ public class AppTest extends FluentTest{
         assertThat(pageSource()).contains("Band Tracker");
     }
 
+    @Test
+    public void addBandTest() {
+        goTo("http://localhost:4567/");
+        fill("#bandName").with("Blanco");
+        fill("#bandGenre").with("Rock");
+        submit(".bandSubmit");
+        assertThat(pageSource()).contains("Blanco");
+    }
+
 
 }
