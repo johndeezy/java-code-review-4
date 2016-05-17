@@ -13,23 +13,24 @@ import static org.junit.Assert.*;
 
 public class AppTest extends FluentTest{
 
-  public WebDriver webDriver = new HtmlUnitDriver();
+    public WebDriver webDriver = new HtmlUnitDriver();
 
-  @Override
-  public WebDriver getDefaultDriver() {
-    return webDriver;
-  }
+    @Override
+    public WebDriver getDefaultDriver() {
+        return webDriver;
+    }
 
-  @ClassRule
-  public static ServerRule server = new ServerRule();
+    @ClassRule
+    public static ServerRule server = new ServerRule();
 
-  @Rule
-  public DatabaseRule database = new DatabaseRule();
+    @Rule
+    public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  // public void rootTest() {
-  //   goTo("http://localhost:4567/");
-  //   assertThat(pageSource()).contains("Portland Library");
-  // }
+    @Test
+    public void rootTest() {
+        goTo("http://localhost:4567/");
+        assertThat(pageSource()).contains("Band Tracker");
+    }
+
 
 }
